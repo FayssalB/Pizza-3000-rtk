@@ -1,16 +1,18 @@
-const { createSlice } = require("@reduxjs/toolkit");
+import { createSlice } from "@reduxjs/toolkit";
+import pizzas from "../pizzas";
 
 const initialState = {
-    todos:[
-
-    ]
+    pizzas,
+    orders:[]
 };
 
-const dataSlice = createSlice({
+export const dataSlice = createSlice({
     name:"data",
     initialState,
     reducers: {
-        //Action à rajouter ici
+        addOrder:(state, {payload})=>{
+
+        }
     }
 })
 
