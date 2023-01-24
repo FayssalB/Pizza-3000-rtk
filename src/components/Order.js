@@ -4,21 +4,21 @@ import pizzas from '../pizzas'
 import Pizza from './Pizza';
 
 const Order = () => {
- 
+
     const pizzas = useSelector(state => state.data.pizzas)
-    const listPizza = Object.keys(pizzas).map(pizza => (
-      <Pizza 
-      name={pizza.name}
-      price={pizza.price}
-      image={pizza.image}
-      />
+    const listPizza = Object.keys(pizzas).map(key=> (
+        <Pizza
+            name={pizzas[key].name}
+            price={pizzas[key].price}
+            image={pizzas[key].image}
+        />
     ));
     return (
-    <div>
-    {listPizza}
-    </div>
-    
-  )
+        <div>
+            {listPizza}
+        </div>
+
+    )
 }
 
 export default Order
