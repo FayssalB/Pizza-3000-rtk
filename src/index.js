@@ -1,37 +1,51 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
+import dataReducer from "./app/store";
 import './index.css';
 import App from './App';
-import {createRoot} from 'react-dom/client';
-import {StrictMode} from 'react';
-import {
-  BrowserRouter as Router,Route, Routes
-} from 'react-router-dom';
-import { configureStore } from '@reduxjs/toolkit';
-import { Provider } from 'react-redux';
-import dataReducer from "./slices/index"
+// import NewOrder from './components/NewOrder';
+// import Order from './components/Order';
+// import PaymentOrder from './components/PaymentOrder';
+// import Orders from './components/Orders';
+// import NotFound from './components/NotFound';
+import * as serviceWorker from './serviceWorker';
 
+import {
+    BrowserRouter as Router,
+    Route,
+    Routes
+} from 'react-router-dom';
+
+// Création du store via Redux Toolkit
 const store = configureStore({
-  reducer:{
-    data:dataReducer
-  }
+    reducer: {
+        data: dataReducer
+    }
 });
 
 const Root = () => (
-  <Router>
-    <Routes>
-      <Route exact path='/' element={<App/>}/>
-    </Routes>
-  </Router>
+    <Router>
+        <Routes>
+            <Route exact path='/' element={<App/>} />
+            {/* <Route path='/new' element={<NewOrder/>} />
+            <Route path='/order/:oid' element={<Order/>} />
+            <Route exact path='/orders' element={<Orders/>} />
+            <Route exact path='/payment-order' element={<PaymentOrder/>} />
+            <Route element={<NotFound/>} /> */}
+        </Routes>
+    </Router>
 );
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <StrictMode>
-    <Root />
-  </StrictMode>
+ReactDOM.render(
+    <Provider store={store}>
+        <Root />
+    </Provider>,
+    document.getElementById('root')
 );
 
-export default Root
-
-
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();
