@@ -1,12 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { StrictMode } from 'react';
+import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import dataReducer from "./app/store";
 import './index.css';
 import App from './App';
-// import NewOrder from './components/NewOrder';
-// import Order from './components/Order';
+import NewOrder from './components/NewOrder';
+import Order from './components/Order';
 // import PaymentOrder from './components/PaymentOrder';
 // import Orders from './components/Orders';
 // import NotFound from './components/NotFound';
@@ -28,21 +28,26 @@ const store = configureStore({
 const Root = () => (
     <Router>
         <Routes>
-            <Route exact path='/' element={<App/>} />
-            {/* <Route path='/new' element={<NewOrder/>} />
+            <Route exact path='/' element={<App />} />
+
+            <Route path='/new' element={<NewOrder/>} />
+
             <Route path='/order/:oid' element={<Order/>} />
+             {/*
             <Route exact path='/orders' element={<Orders/>} />
             <Route exact path='/payment-order' element={<PaymentOrder/>} />
-            <Route element={<NotFound/>} /> */}
+            <Route element={<NotFound/>} />  */}
         </Routes>
     </Router>
 );
 
-ReactDOM.render(
-    <Provider store={store}>
-        <Root />
-    </Provider>,
-    document.getElementById('root')
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+    <React.StrictMode>
+        <Provider store={store}>
+            <Root />
+        </Provider>
+    </React.StrictMode>
 );
 
 // If you want your app to work offline and load faster, you can change
