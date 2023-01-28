@@ -23,7 +23,9 @@ export const dataSlice = createSlice({
             // localStorage.setItem('orders', JSON.stringify([...state.orders, order]));
             // Mise à jour du state global
             state.orders.push(order);
-        },
+        },addPizzaToOrder:(state, {})=>{
+            
+        }
        
     }
 });

@@ -2,10 +2,11 @@ import React from 'react'
 
 const Pizza = ({name, price, image}) => {
   return (
-    <div>
-        <img src={`./img/pizzas/${image}`} alt="" />
+    <div onClick={()=>{}}>
+        
         <h3>{name}</h3>
-        <p>{price}</p>
+        <img src={require(`../img/pizzas/${image}`)} alt="" />
+        <p>{price}€</p>
     </div>
   )
 }
